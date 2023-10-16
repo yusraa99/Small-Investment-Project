@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\JWTAuthController;
 use App\Http\Controllers\Auth\RegsterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\RolesAndPermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::middleware('SetAppLang')->prefix('{locale}')->group(
     }
 );
 
-Route::middleware('auth:sanctum','SetAppLang')->prefix('{lacale}')
+Route::middleware('auth:sanctum','SetAppLang')->prefix('{locale}')
 ->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -34,5 +35,8 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::post('logout', [JWTAuthController::class, 'logout']);
 });
 
+Route::middleware('auth:sanctum','SetAppLang')->prefix('{locale}/admin')
+->group(function(){
+    Route::resource('role-permission', RolesAndPermissionController::class);
 
-
+});

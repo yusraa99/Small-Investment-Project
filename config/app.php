@@ -183,7 +183,7 @@ return [
         // Ichtrojan\Otp\OtpServiceProvider::class,
 
         // Erdemkeren\Otp\OtpServiceProvider::class,
-
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*
