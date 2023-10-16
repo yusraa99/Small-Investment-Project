@@ -46,7 +46,9 @@ class RolesAndPermissionController extends Controller
         $role=Role::create(['name'=>$request->role, 'guard_name'=>'web'])
         ->givePermissionTo($request->permissions);
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
-        return response()->json(['success'=>true, 'data'=>$role,200]);
+        return response()->json(['success'=>true], 200);
+        // response()->json(['success'=>true, 'data'=>$role,200]);
+        
     }
 
     /**

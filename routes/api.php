@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::post('logout', [JWTAuthController::class, 'logout']);
 });
 
-Route::middleware('auth:sanctum','SetAppLang')->prefix('{locale}/admin')
+Route::middleware('auth','SetAppLang')->prefix('{locale}/admin')
 ->group(function(){
     Route::resource('role-permission', RolesAndPermissionController::class);
 

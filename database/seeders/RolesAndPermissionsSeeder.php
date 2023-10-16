@@ -25,7 +25,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'settings create', 'settings view', 'settings edit', 'settings delete',
             'user create', 'user view', 'user edit', 'user delete',
             'projects create', 'projects view', 'projects edit', 'projects delete',
-            'reports project', 'reports users', 'reports view',
+            'reports project', 'reports users', 'reports view','reports delete',
         
 
         ];
@@ -41,6 +41,9 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::insert($permissions->toArray());
 
         $role=Role::create(['name'=>'superAdmin'])
+        ->givePermissionTo($arrayOfPermissionNames);
+
+        $role=Role::create(['name'=>'admin'])
         ->givePermissionTo($arrayOfPermissionNames);
     }
 }   
