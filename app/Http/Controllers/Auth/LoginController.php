@@ -28,7 +28,7 @@ class LoginController extends Controller
             $user->notify(new LoginNotification());
             return response()->json($success, 200);
         }else {
-            return response()->json(['error'=>'Unauthorized'], 401);
+            return response()->json(['error'=>__('auth.Unauthorized')], 401);
         }
 
     }

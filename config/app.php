@@ -81,6 +81,10 @@ return [
     */
 
     'locale' => 'en',
+    'available_locales'=>[
+        'en',
+        'ar',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +180,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Ichtrojan\Otp\OtpServiceProvider::class,
+
+        // Erdemkeren\Otp\OtpServiceProvider::class,
+
     ],
 
     /*
@@ -231,6 +239,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // 'Otp' => Ichtrojan\Otp\Otp::class,
     ],
 
 ];

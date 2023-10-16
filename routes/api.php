@@ -17,7 +17,15 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('SetAppLang')->prefix('{locale}')->group(
+    function () {
+        Route::post('register',[RegsterController::class,'register']);
+        Route::post('login',[LoginController::class,'login']);
+    }
+);
+
+Route::middleware('auth:sanctum','SetAppLang')->prefix('{lacale}')
+->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('register', [JWTAuthController::class, 'register']);
@@ -26,5 +34,5 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::post('logout', [JWTAuthController::class, 'logout']);
 });
 
-Route::post('register',[RegsterController::class,'register']);
-Route::post('login',[LoginController::class,'login']);
+
+
